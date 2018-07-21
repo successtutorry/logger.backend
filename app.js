@@ -1,7 +1,7 @@
 // this is the main page of our app
 
 
- const express = require('express');
+const express = require('express');
 const morgan = require('morgan')
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -77,4 +77,4 @@ app.use((req, res, next) => {
   res.render('notFound');
 });
 
-app.listen(5000, () => console.log('Server started listening on port 5000!'));
+app.listen(3000, () => console.log('Server started listening on port 3000!'));
