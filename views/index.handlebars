@@ -5,21 +5,40 @@
   <p><a class="btn btn-lg btn-default" href="/users/register" role="button">Get Registered</a></p>
 </div>
 
-<!-- Example row of columns -->
+<h2>Tutor Requirements:</h2>
+
+{{# each requirement}}
+    
 <div class="row">
+
+{{# each this}}
 <div class="col-lg-4">
-  <h2>How it works</h2>
-  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+  <h2>{{this.subject}}</h2></br>
+  <p>Class: {{this.class}}</p></br>
+  <p>Location</p></br>
+  <p>Gender</p></br>
   <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 </div>
+{{/each}}
+
+</div>
+
+{{/each}}
+
+<h2>Available Tutors</h2>
+
+{{# each tutor}}
+    
+<div class="row">
+
+{{# each this}}
 <div class="col-lg-4">
-  <h2>Tutors</h2>
-  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+  <h2>Name: {{this.username}}</h2></br>
+  <p>Email: {{this.email}}</p></br>
   <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 </div>
-<div class="col-lg-4">
-  <h2>Students</h2>
-  <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+{{/each}}
+
 </div>
-</div>
+
+{{/each}}

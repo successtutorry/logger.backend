@@ -5,3 +5,22 @@
   <p class="lead">Username: {{username}}</p>
   <p class="lead">Email: {{email}}</p>
 </div>
+
+<form class="form-signin" action="/users/profile" method="POST">
+  <h2 class="form-signin-heading">Please complete the profile</h2>
+
+  <label for="inputFirstName" class="sr-only">First Name</label>
+  <input type="text" id="inputFirstName" name="firstname" class="form-control" placeholder="First Name" required autofocus>
+
+  <label for="inputLastName" class="sr-only">Last Name</label>
+  <input type="text" id="inputLastName" name="lastname" class="form-control" placeholder="Last Name" required autofocus>
+
+   
+
+ 
+ 
+  <br/>
+
+  <button class="btn btn-lg btn-default btn-block" type="submit">SAVE</button>
+  
+</form>

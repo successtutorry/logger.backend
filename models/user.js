@@ -12,13 +12,13 @@ const bcrypt = require('bcryptjs');
 
 
 const userSchema = new Schema({
-
 	
 	email: String,
 	username: String,
 	password: String,
 	secretToken: String,
-	active: Boolean
+	active: Boolean,
+	//type: String
 }, {
 
 	timestamps: { // this will give us the detail when the account is created

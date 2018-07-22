@@ -13,6 +13,9 @@ const bodyParser = require('body-parser');
 
 // requiring from our own modules
 const User = require('../models/user');
+const Requirement = require('../models/requirements');
+const tutorProfile = require('../models/generalProfile');
+
 
 // Validation Schema, validationg the fields which user is entering
 
@@ -119,7 +122,7 @@ router.route('/register')
       Token: <b>${secretToken}</b>
       <br/>
       On the following page:
-      <a href="http://localhost:5000/users/verify?id=${secretToken}">${secretToken}/</a>
+      <a href="http://localhost:3000/users/verify?id=${secretToken}">${secretToken}/</a>
       <br/><br/>
       Have a pleasant day.` 
 
@@ -152,17 +155,29 @@ router.route('/login')
  
 
 router.route('/dashboard')
-  .get(isAuthenticated, (req, res) => {
-    res.render('dashboard', {
-      username: req.user.username,
-      email: req.user.email
+  .get(isAuthenticated, (req, res, next) => {
+    Requirement.find( { email: req.user.email }, function(err, docs){
+      var requirementChunks = [];
+      var chunkSize = 3;
+      for(var i=0; i < docs.length; i+= chunkSize){
+          requirementChunks.push(docs.slice(i, i+chunkSize));
+      }
+        res.render('dashboard', {  requirement: requirementChunks });
+      
+     
+      // username: req.user.username,
+     // email: req.user.email
     });
   });
+
+    
+ 
 
   // this route is executed when the user tries to access account verification page
 
 router.route('/verify')
  .get(isNotAuthenticated, (req, res) => {
+
     res.render('verify');
   })
 .post(async (req, res, next) => {
@@ -170,6 +185,10 @@ router.route('/verify')
 
     try {
      const { secretToken } = req.body;
+     const secret1 = req.body.id;
+
+     console.log(secretToken);
+      console.log(secret1);
 
       // Find account with matching secret token
       const user = await User.findOne({ 'secretToken': secretToken });
@@ -210,19 +229,48 @@ router.route('/verify')
 router.route('/profile')
 .get(isAuthenticated, (req, res) => {
  
-res.render('profile', {
-      username: req.user.username,
-      email: req.user.email
-    });
-  });
+res.render('profile', { username: req.user.username, email: req.user.email });
+  })
+.post(isAuthenticated, async (req, res, next) =>{
+
+try{
+
+      const newProfile = await new tutorProfile(req.body); 
+      console.log('newProfile', newProfile);
+
+      await newProfile.save();
+      req.flash('success', 'Your requirement has been saved');
+
+      res.redirect('/users/dashboard');
+
+    }catch(error) {
+      next(error);
+    
+    }
+
+});
+
+
 
 router.route('/postRequirement')
-.get(isAuthenticated, (req, res) =>{
+.get( (req, res) =>{
  res.render('tutorRequirement');
 })
-.post(isAuthenticated, (req, res) =>{
+.post(isAuthenticated, async (req, res, next) =>{
 
+  try{
 
+      const newRequirement = await new Requirement(req.body); 
+      console.log('newRequirement', newRequirement);
+
+      await newRequirement.save();
+      req.flash('success', 'Your requirement has been posted');
+      res.redirect('/users/dashboard');
+
+    }catch(error) {
+      next(error);
+    
+    }
 
 });
 

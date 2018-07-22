@@ -1,6 +1,25 @@
 <!-- Jumbotron -->
-<div class="jumbotron">
-  <h1>Your secret page</h1>
+<!--<div class="jumbotron">
   <p class="lead">Posted Requirments</p>
-  <p class="lead">Username: {{username}}</p>
+  <p class="lead">Welcome {{username}} !</p>
+</div>-->
+
+{{# each requirement}}
+    
+<div class="row">
+
+{{# each this}}
+<div class="col-lg-4">
+  <h2>{{this.subject}}</h2></br>
+  <p>Class: {{this.class}}</p></br>
+  <p>Location</p></br>
+  <p>Gender</p></br>
+  <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 </div>
+{{/each}}
+
+</div>
+
+{{/each}}
+
+
