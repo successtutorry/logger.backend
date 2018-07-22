@@ -217,16 +217,28 @@ res.render('profile', {
   });
 
 router.route('/postRequirement')
-.get(isAuthenticated, (req, res) =>{
+.get(isNotAuthenticated, (req, res) =>{
  res.render('tutorRequirement');
-})
-.post(isAuthenticated, (req, res) =>{
-
-
-
 });
 
 
+router.route('/posttutorRequirement')
+.post((req, res) =>{
+
+  res.render('tutorList');
+
+})
+.get((req, res) =>{
+
+
+  
+});
+
+
+router.route('/becometutor')
+.get(isNotAuthenticated, (req, res) =>{
+ res.render('becometutor');
+});
 
 router.route('/logout')
   .get(isAuthenticated, (req, res) => {
@@ -237,3 +249,10 @@ router.route('/logout')
 
 
 module.exports = router;
+
+
+
+
+
+
+

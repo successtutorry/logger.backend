@@ -36,3 +36,32 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+h2{
+  text-align: center;
+  font-weight: bold;
+}
+
+h4{
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+body img{
+  
+  background-color:#ccc;
+  box-shadow: 2px 2px 2px #555;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+}
+.alignright {
+  float: right;
+}
+

@@ -1,19 +1,21 @@
-<form class="form-signin" action="/users/postRequirement" method="POST">
+<form class="form-signin" action="/users/posttutorRequirement" method="POST">
   <h2 class="form-signin-heading">Fill the details</h2>
 
  
-  <label for="inputUsername" class="sr-only">Username</label>
-  <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Name" required>
-
-  <label for="inputUserage" class="sr-only">Age</label>
-  <input type="text" id="inputUserage" name="age" class="form-control" placeholder="Age" required>
-
-  <label for="inputUserclass" class="sr-only">Class</label>
-  <input type="text" id="inputUserclass" name="class" class="form-control" placeholder="Class" required>
+  <label for="inputUsername" class="sr-only">Board</label>
+  <input type="text" id="Board" name="board" class="form-control" placeholder="Board" required>
 
   <label for="inputUsersubject" class="sr-only">Subject</label>
   <input type="text" id="inputUsersubject" name="subject" class="form-control" placeholder="Subject" required>
 
+
+  <label for="inputUserage" class="sr-only">City</label>
+  <input type="text" id="city" name="city" class="form-control" placeholder="City" required>
+
+  <label for="inputUserclass" class="sr-only">Grade</label>
+  <input type="text" id="Grade" name="grade" class="form-control" placeholder="Grade" required>
+
+  
   <br/>
 
   <button class="btn btn-lg btn-default btn-block" type="submit">POST REQUIREMENT</button>

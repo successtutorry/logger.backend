@@ -1,3 +1,5 @@
+
+
 // this is the main page of our app
 
 
@@ -76,5 +78,6 @@ app.use((req, res, next) => {
 
   res.render('notFound');
 });
+
 
 app.listen(3000, () => console.log('Server started listening on port 3000!'));
