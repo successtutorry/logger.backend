@@ -6,8 +6,13 @@ const profileSchema = new Schema({
 
 	firstname: String,
 	lastname: String,
+	address1: String,
+	address2: String,
+	address3: String,
+	zipcode: String,
+	mobileno: String,
+    email: String
 	
-	//skills: { type: Schema.Types.ObjectId, ref: 'skills'}
 
 }, {
 

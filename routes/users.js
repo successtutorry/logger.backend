@@ -23,7 +23,8 @@ const userSchema = Joi.object().keys({
   email: Joi.string().email().required(),
   username: Joi.string().required(),
   password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
-  confirmationPassword: Joi.any().valid(Joi.ref('password')).required()
+  confirmationPassword: Joi.any().valid(Joi.ref('password')).required(),
+  type: Joi.string().required()
 });
 
 // Authorization 
@@ -122,7 +123,7 @@ router.route('/register')
       Token: <b>${secretToken}</b>
       <br/>
       On the following page:
-      <a href="http://localhost:3000/users/verify?id=${secretToken}">${secretToken}/</a>
+      <a href="http://localhost:3000/users/verify?id=${secretToken}">${secretToken}</a>
       <br/><br/>
       Have a pleasant day.` 
 
@@ -228,8 +229,9 @@ router.route('/verify')
 
 router.route('/profile')
 .get(isAuthenticated, (req, res) => {
- 
-res.render('profile', { username: req.user.username, email: req.user.email });
+
+ const userProfile = tutorProfile.findOne({email: req.user.email});
+res.render('profile', { username: req.user.username, email: req.user.email, mobileno: userProfile.mobileno });
   })
 .post(isAuthenticated, async (req, res, next) =>{
 
@@ -239,7 +241,7 @@ try{
       console.log('newProfile', newProfile);
 
       await newProfile.save();
-      req.flash('success', 'Your requirement has been saved');
+      req.flash('success', 'Your profile details has been saved');
 
       res.redirect('/users/dashboard');
 

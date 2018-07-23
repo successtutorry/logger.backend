@@ -10,7 +10,8 @@ const bcrypt = require('bcryptjs');
 // this is the user Schema
 //these values will be inserted in the table or collection in case of mongodb
 
-
+//ObjectId = Schema.ObjectId;
+//console.log(studentId);
 const userSchema = new Schema({
 	
 	email: String,
@@ -18,7 +19,7 @@ const userSchema = new Schema({
 	password: String,
 	secretToken: String,
 	active: Boolean,
-	//type: String
+	type: String
 }, {
 
 	timestamps: { // this will give us the detail when the account is created
@@ -29,7 +30,6 @@ const userSchema = new Schema({
 });
 
 // exporting the user so that it can be used wherever required
-
 const User = mongoose.model('user', userSchema);
 module.exports = User;
 module.exports.hashPassword =  async(password) => {
