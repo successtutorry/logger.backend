@@ -10,7 +10,14 @@ const requirementSchema = new Schema({
 	age: String,
 	class: String,
 	subject: String,
-	email: String
+	email: String,
+	location_preference: String,
+	gender_preference: String,
+	address: String,
+	availabletime: String,
+	description: String
+
+
 	
 
 }, {

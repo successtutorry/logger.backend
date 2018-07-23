@@ -11,9 +11,13 @@
 {{# each this}}
 <div class="col-lg-4">
   <h2>{{this.subject}}</h2></br>
+  <p>Name: {{this.name}}</p></br>
+  <p>Age: {{this.age}}</p></br>
   <p>Class: {{this.class}}</p></br>
-  <p>Location</p></br>
-  <p>Gender</p></br>
+  <p>Gender Preference: {{this.gender_preference}}</p></br>
+  <p>Location Preference: {{this.location_preference}}</p></br>
+  <pAvailability: {{this.availabletime}}</p></br>
+  <p>Other Description: {{this.description}}</p></br>
   <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 </div>
 {{/each}}
