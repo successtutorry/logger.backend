@@ -11,6 +11,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const passport  = require('passport');
+const mongoStore = require('connect-mongo');
 
 require('./config/passport'); 
 
@@ -49,7 +50,8 @@ app.use(session({
   cookie: { maxAge: 60000 },
   secret: 'codeworkrsecret',
   saveUninitialized: false,
-  resave: false
+  resave: false,
+  store: new mongoStore({ mongooseConnection: mongoose.connection}),
 }));
 
 
@@ -65,6 +67,8 @@ app.use((req, res, next) => {
 	res.locals.isAuthenticated = req.user ? true: false;
 	next();
 });
+
+
 
 // to allow to pass the routes through these
 
