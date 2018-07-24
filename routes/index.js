@@ -8,13 +8,13 @@ const User = require('../models/user');
 
 
 
-/*router.get('/', (req, res) => {
+router.get('/', (req, res) => {
 
 
     res.render('index');
-});*/
+});
 
-router.get( '/', (req, res, next) => {
+/*router.get( '/', (req, res, next) => {
     Requirement.find( function(err, docs){
       var requirementChunks = [];
       var chunkSize = 3;
@@ -23,7 +23,7 @@ router.get( '/', (req, res, next) => {
       }
         res.render('index', {  requirement: requirementChunks });
      
-    });
+    });*/
 
     /* User.find( function(err, docs){
       var tutorChunks = [];
@@ -37,6 +37,6 @@ router.get( '/', (req, res, next) => {
 
 		//res.render('index', {  tutor: tutorChunks , requirement: requirementChunks });     
 
-  });
+  
 
 module.exports = router;
