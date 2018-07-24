@@ -10,9 +10,6 @@ var smtpTransport = require('nodemailer-smtp-transport');
 const mailer = require('../misc/mailer');
 var url = require('url');
 const bodyParser = require('body-parser');
-const csurf = require('csurf');
-
-var crfProtection  = csrf();
 
 // requiring from our own modules
 const User = require('../models/user');

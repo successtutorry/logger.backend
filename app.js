@@ -11,7 +11,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const passport  = require('passport');
-const mongoStore = require('connect-mongo');
+//const mongoStore = require('connect-mongo');
 
 require('./config/passport'); 
 
@@ -51,7 +51,7 @@ app.use(session({
   secret: 'codeworkrsecret',
   saveUninitialized: false,
   resave: false,
-  store: new mongoStore({ mongooseConnection: mongoose.connection}),
+  //store: new mongoStore({ mongooseConnection: mongoose.connection}),
 }));
 
 
