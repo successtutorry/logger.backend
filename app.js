@@ -1,3 +1,4 @@
+
 // this is the main page of our app
 
 
@@ -21,7 +22,8 @@ mongoose.Promise = global.Promise;
 
 //database connection 
 
-mongoose.connect('mongodb://root:root123@ds127781.mlab.com:27781/tutorplatform', { useNewUrlParser: true}, function(err){
+
+mongoose.connect('mongodb://127.0.0.1:27017/tutorry', { useNewUrlParser: true}, function(err){
 	if(err){
 		console.log(err);
 	} else {
@@ -53,6 +55,7 @@ app.use(session({
   resave: false,
   //store: new mongoStore({ mongooseConnection: mongoose.connection}),
 }));
+
 
 
 app.use(passport.initialize());
