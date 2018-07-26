@@ -65,6 +65,7 @@ router.route('/register')
     try {
       const result = Joi.validate(req.body, userSchema);
       if (result.error) {
+	console.log(result.error);
         req.flash('error', 'Data is not valid. Please try again.');
         res.redirect('/users/register');
         return;

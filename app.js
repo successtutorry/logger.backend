@@ -23,7 +23,7 @@ mongoose.Promise = global.Promise;
 //database connection 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/tutorry', { useNewUrlParser: true}, function(err){
+mongoose.connect('mongodb://127.0.0.1:27017/surudb', { useNewUrlParser: true}, function(err){
 	if(err){
 		console.log(err);
 	} else {
