@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Tutorry</title>
-    <link rel="stylesheet" 
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
-          crossorigin="anonymous">
-    <link rel="stylesheet" 
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" 
-          crossorigin="anonymous">
-    <link rel="stylesheet" 
-          href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/__colors.css?ver=4.9.8">
+    <link rel="stylesheet" href="/css/__styles.css?ver=4.9.8">
+    <link rel="stylesheet" href="/css/trx_addons.css">
+    <link rel="stylesheet" href="/css/responsive.css?ver=4.9.8">
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+    <style type="text/css">
+    .page_wrap {
+        background-color: gray !important;
+    }
+    </style>
+
   </head>
-  <body>
-    {{#if success_messages }}
-      <div class="alert alert-success">{{success_messages}}</div>
-    {{/if}}
-    {{#if error_messages }}
-      <div class="alert alert-danger">{{error_messages}}</div>
-    {{/if}}
-    <div class="container">
-      {{> navbar}}
-      {{{body}}}
-      {{> footer}}
+
+  <body class="home page-template-default page page-id-219 frontpage body_tag scheme_default blog_mode_home body_style_wide  is_stream blog_style_excerpt sidebar_hide expand_content header_style_header-default header_position_over menu_style_top wpb-js-composer js-comp-ver-5.5.2 vc_responsive desktop_layout">
+
+    <div class="body_wrap">
+      <div class="page_wrap">
+        {{> header}}
+        {{{body}}}
+        {{> footer}}
+      </div>
     </div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
-            crossorigin="anonymous"></script>
   </body>
+
 </html>
