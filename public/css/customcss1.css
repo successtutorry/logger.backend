@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-  <head>
-    <title>Tutorry</title>
-    
-    <link rel="stylesheet" href="/css/__colors.css?ver=4.9.8">
-    <link rel="stylesheet" href="/css/__styles.css?ver=4.9.8">
-    <link rel="stylesheet" href="/css/trx_addons.css">
-    <link rel="stylesheet" href="/css/responsive.css?ver=4.9.8">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/js_composer.min.css">
-    <link rel="stylesheet" href="/css/tutor-plugin.css?ver=5.5.2">
-    <link rel="stylesheet" href="/css/jquery-ui.min.css">
-    <link rel="stylesheet" href="/css/magnific-popup.css">
-    <link media="screen" rel="stylesheet" href="/css/customcss1.css">
-
-
-    <!--<style type="text/css" media="screen">#ui-datepicker-div.booked_custom_date_picker table.ui-datepicker-calendar tbody td a.ui-state-active,
+#ui-datepicker-div.booked_custom_date_picker table.ui-datepicker-calendar tbody td a.ui-state-active,
 #ui-datepicker-div.booked_custom_date_picker table.ui-datepicker-calendar tbody td a.ui-state-active:hover,
 body #booked-profile-page input[type=submit].button-primary:hover,
 body .booked-list-view button.button:hover,
@@ -32,7 +14,7 @@ body #booked-profile-page .booked-tabs li.active a,
 body #booked-profile-page .booked-tabs li.active a:hover,
 body #booked-profile-page .appt-block .google-cal-button>a:hover,
 #ui-datepicker-div.booked_custom_date_picker .ui-datepicker-header {
-  background: #134477 !important;
+	background: #134477 !important;
 }
 
 body #booked-profile-page input[type=submit].button-primary:hover,
@@ -44,7 +26,7 @@ body table.booked-calendar th,
 body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button:hover,
 body #booked-profile-page .booked-profile-header,
 body #booked-profile-page .appt-block .google-cal-button>a:hover {
-  border-color: #134477 !important;
+	border-color: #134477 !important;
 }
 
 body table.booked-calendar tr.days,
@@ -53,12 +35,12 @@ body .booked-calendarSwitcher.calendar,
 body #booked-profile-page .booked-tabs,
 #ui-datepicker-div.booked_custom_date_picker table.ui-datepicker-calendar thead,
 #ui-datepicker-div.booked_custom_date_picker table.ui-datepicker-calendar thead th {
-  background: #092746 !important;
+	background: #092746 !important;
 }
 
 body table.booked-calendar tr.days th,
 body #booked-profile-page .booked-tabs {
-  border-color: #092746 !important;
+	border-color: #092746 !important;
 }
 
 #ui-datepicker-div.booked_custom_date_picker table.ui-datepicker-calendar tbody td.ui-datepicker-today a,
@@ -81,7 +63,7 @@ body .booked-list-view a.booked_list_date_picker_trigger.booked-dp-active:hover,
 /* Multi-Slot Booking */
 
 {
-  background: #aece61;
+	background: #aece61;
 }
 
 body #booked-profile-page input[type=submit].button-primary,
@@ -95,7 +77,7 @@ body #booked-profile-page .appt-block .google-cal-button>a,
 body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
 body .booked-list-view a.booked_list_date_picker_trigger.booked-dp-active,
 body .booked-list-view a.booked_list_date_picker_trigger.booked-dp-active:hover {
-  border-color: #aece61;
+	border-color: #aece61;
 }
 
 body .booked-modal .bm-window p i.fa,
@@ -103,62 +85,9 @@ body .booked-modal .bm-window a,
 body .booked-appt-list .booked-public-appointment-title,
 body .booked-modal .bm-window p.appointment-title,
 .booked-ms-modal.visible:hover .booked-book-appt {
-  color: #aece61;
+	color: #aece61;
 }
 
 .booked-appt-list .timeslot.has-title .booked-public-appointment-title {
-  color: inherit;
+	color: inherit;
 }
-
-</style>-->
-
-    <style type="text/css">
-img.wp-smiley,
-img.emoji {
-  display: inline !important;
-  border: none !important;
-  box-shadow: none !important;
-  height: 1em !important;
-  width: 1em !important;
-  margin: 0 .07em !important;
-  vertical-align: -0.1em !important;
-  background: none !important;
-  padding: 0 !important;
-}
-</style><style type="text/css">
-img.wp-smiley,
-img.emoji {
-  display: inline !important;
-  border: none !important;
-  box-shadow: none !important;
-  height: 1em !important;
-  width: 1em !important;
-  margin: 0 .07em !important;
-  vertical-align: -0.1em !important;
-  background: none !important;
-  padding: 0 !important;
-}
-</style>
-    
-
-    <style type="text/css">
-    .page_wrap {
-        background-color: gray !important;
-    }
-    </style>
-
-  </head>
-
-  <body class="home page-template-default page page-id-219 frontpage body_tag scheme_default blog_mode_home body_style_wide  is_stream blog_style_excerpt sidebar_hide expand_content header_style_header-default header_position_over menu_style_top wpb-js-composer js-comp-ver-5.5.2 vc_responsive desktop_layout">
-
-    <div class="body_wrap">
-      <div class="page_wrap">
-        {{> header}}
-        {{{body}}}
-        {{> footer}}
-      </div>
-    </div>
-
-  </body>
-
-</html>
