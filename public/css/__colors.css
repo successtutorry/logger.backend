@@ -2012,7 +2012,7 @@ figure figcaption,
 }
 
 .scheme_default .header_style_header-default .top_panel_title {
-	background-color: #f6f8fa
+	background-color: #f6f8fa !important
 }
 
 .scheme_default .header_style_header-default .top_panel_title .sc_layouts_title_caption {
