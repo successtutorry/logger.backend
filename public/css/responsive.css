@@ -3528,7 +3528,7 @@
 
 
     .vc_column_container.special_class_5 .vc_column-inner {
-        min-height: 33.4rem;
+        min-height: 30.9rem;
     }
 }
 @media (max-width: 1439px) {
@@ -4106,4 +4106,8 @@ and (orientation : landscape) {
 	.widget_nav_menu .menu-footer-menu-container .menu li {
 		display: block;
 	}
+}
+@media (max-width: 1439px) and (min-width: 1263px)
+.sc_layouts_row, .sc_layouts_row input[type="text"], .sc_layouts_item_details_line2 {
+    font-size: 14px;
 }
