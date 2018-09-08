@@ -1,12 +1,7 @@
-feaconst express = require('express');
+const express = require('express');
 const router = express.Router();
 
 
-
-router.route('/index')
-  .get((req, res) => {
-    res.render('index');
-  });
 router.route('/inner')
   .get((req, res) => {
     res.render('inner');
