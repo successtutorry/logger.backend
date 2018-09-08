@@ -1,1 +1,225 @@
-{{>header1}}
+
+            <header class="top_panel top_panel_default without_bg_image header-default scheme_default">
+               <div class="top_panel_top">
+                  <div class="content_wrap">
+                     <div class="custom_button_language">
+                        <a href="#" class="language_button down"><span>Language</span></a>
+                        <ul class="language_list">
+                           <li><a rel="alternate" hreflang="en" href="http://smarthead.ancorathemes.com/contacts/" class="active">English</a></li>
+                        </ul>
+                     </div>
+                     <div>
+                        <span style="font-size:13px; cursor:pointer;float:right; padding-right:70px; color:white" onclick="on()">Login</span>
+                     </div>
+                  </div>
+               </div>
+            </header>
+         
+      <script>
+         function on() {
+         document.getElementById("myNav").style.display = "block";
+         }
+
+         function off() {
+
+         document.getElementById("myNav").style.display = "none";
+
+         }
+
+      </script>
+   <style>
+   .overlay {
+   position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.overlaylogin{
+   
+
+margin-top:200px;
+margin-left:500px;
+margin-right:500px;
+   
+}
+   </style>
+
+
+<style type="text/css">
+   
+
+   /* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+</style>
+      <!--<div id="trx_addons_login_popup" class="trx_addons_popup trx_addons_tabs">
+         <ul class="trx_addons_tabs_titles">
+            <li class="trx_addons_tabs_title trx_addons_tabs_title_login">
+               <a href="#trx_addons_login_content">
+               <i class="trx_addons_icon-lock-open"></i>			
+               Login			</a>
+            </li>
+            <li class="trx_addons_tabs_title trx_addons_tabs_title_register" data-disabled="true">
+               <a href="#trx_addons_register_content">
+               <i class="trx_addons_icon-user-plus"></i>			
+               Register			</a>
+            </li>
+         </ul>
+         <div id="trx_addons_login_content" class="trx_addons_tabs_content trx_addons_login_content">
+            <div>
+               <div class="trx_addons_popup_form_wrap trx_addons_popup_form_wrap_login">
+                  <form class="trx_addons_popup_form trx_addons_popup_form_login sc_input_hover_iconed" action="http://smarthead.ancorathemes.com/wp-login.php" method="post" name="trx_addons_login_form">
+                     <input type="hidden" id="login_redirect_to" name="redirect_to" value="">
+                     <div class="trx_addons_popup_form_field trx_addons_popup_form_field_login">
+                        <label class="sc_form_field sc_form_field_log required">
+                        <span class="sc_form_field_wrap"><input type="text" 
+                           name="log"
+                           id="log"
+                           value=""
+                           aria-required="true"										><span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-user-alt"></i><span class="sc_form_field_content" data-content="Login">Login</span></span>	</span>
+                        </label>
+                     </div>
+                     <div class="trx_addons_popup_form_field trx_addons_popup_form_field_password">
+                        <label class="sc_form_field sc_form_field_pwd required">
+                        <span class="sc_form_field_wrap"><input type="password" 
+                           name="pwd"
+                           id="pwd"
+                           value=""
+                           aria-required="true"										><span class="sc_form_field_hover"><i class="sc_form_field_icon trx_addons_icon-lock"></i><span class="sc_form_field_content" data-content="Password">Password</span></span>	</span>
+                        </label>
+                     </div>
+                     <div class="trx_addons_popup_form_field trx_addons_popup_form_field_remember">
+                        <a href="http://smarthead.ancorathemes.com/my-account/lost-password/" class="trx_addons_popup_form_field_forgot_password">Forgot password?</a>
+                        <input type="checkbox" value="forever" id="rememberme" name="rememberme"><label for="rememberme"> Remember me</label>
+                     </div>
+                     <div class="trx_addons_popup_form_field trx_addons_popup_form_field_submit">
+                        <input type="submit" class="submit_button" value="Login">
+                     </div>
+                     <div class="trx_addons_message_box sc_form_result"></div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>-->
+
+   <div id="myNav" class="overlay trx_addons_popup trx_addons_tabs">
+      <a href="javascript:void(0)" class="closebtn" onclick="off()">&times;</a>
+         <div class="overlaylogin border">
+            <div class="tab">
+              <button class="tablinks" onclick="openForm(event, 'login_form')">LOGIN</button>
+              <button class="tablinks" onclick="openForm(event, 'register_form')">REGISTER</button>
+            </div>
+            <div id="login_form" class="tabcontent">
+               <form class="form-horizontal trx_addons_popup_form trx_addons_popup_form_login sc_input_hover_iconed" action="/action_page.php">
+                  <div class="form-group trx_addons_popup_form_field trx_addons_popup_form_field_login" style="margin-top:10px">
+                     <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                     </div>
+                  </div>
+                  <div class="form-group trx_addons_popup_form_field trx_addons_popup_form_field_password">
+                     <div class="col-sm-10">          
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                     </div>
+                  </div>
+                  
+                  <div class="form-group">        
+                     <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+            <div id="register_form" class="tabcontent">
+               <form class="form-horizontal trx_addons_popup_form trx_addons_popup_form_login sc_input_hover_iconed" action="/action_page.php">
+                  <div class="form-group trx_addons_popup_form_field trx_addons_popup_form_field_login" style="margin-top:10px">
+                     <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                     </div>
+                  </div>
+                  <div class="form-group trx_addons_popup_form_field trx_addons_popup_form_field_password">
+                     <div class="col-sm-10">          
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                     </div>
+                  </div>
+                  <div class="form-group trx_addons_popup_form_field trx_addons_popup_form_field_password">
+                     <div class="col-sm-10">          
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                     </div>
+                  </div>
+                  
+                  <div class="form-group">        
+                     <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+   </div>
+   <script>
+function openForm(evt, formName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(formName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+     
