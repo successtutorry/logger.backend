@@ -1287,12 +1287,12 @@ figure.alignright {
 
 /* Content and Sidebar */
 body:not(.expand_content):not(.body_style_fullwide):not(.body_style_fullscreen) .content { width: 740px; }
-.sidebar { 				 width: 370px; }
+.sidebar { 				 width: 270px; }
 .sidebar_hide .content { margin-left: auto; margin-right: auto; }
 .sidebar_right .content { float: left; }
 .sidebar_right .sidebar { float: right; }
 .sidebar_left .content  { float: right; }
-.sidebar_left .sidebar  { float: left; }
+.sidebar_left .sidebar  { float: left; } 
 
 /* Fullwide or Fullscreen with sidebar */
 .body_style_fullwide .content, .body_style_fullscreen .content { width:auto; max-width:100%; }
