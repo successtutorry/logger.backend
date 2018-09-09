@@ -16,16 +16,17 @@
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
     <link rel="stylesheet" href="/css/magnific-popup.css">
     <link media="screen" rel="stylesheet" href="/css/customcss1.css">
-    <link rel="stylesheet" id="trx_addons-icons-css" href="/css/trx_addons_icons-embedded.css?ver=4.9.8" type="text/css" media="all">
-    <link rel="stylesheet" id="smarthead-font-google_fonts-css" href="http://fonts.googleapis.com/css?family=Titillium+Web%3A400%2C600%2C700%7CSanchez%3A400%2C400italic%2C700%2C700italic&amp;subset=latin%2Clatin-ext&amp;ver=4.9.8" type="text/css" media="all">
-
     <link rel="stylesheet" href="/css/font.css">
      <link rel="stylesheet" type="text/css" href="/css/extracss.css">
     <link rel="stylesheet" href="/css/icon.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="/js/overlay.js"></script>
+    <link rel="stylesheet" id="trx_addons-icons-css" href="/css/trx_addons_icons-embedded.css?ver=4.9.8" type="text/css" media="all">
+    <link rel="stylesheet" id="smarthead-font-google_fonts-css" href="http://fonts.googleapis.com/css?family=Titillium+Web%3A400%2C600%2C700%7CSanchez%3A400%2C400italic%2C700%2C700italic&amp;subset=latin%2Clatin-ext&amp;ver=4.9.8" type="text/css" media="all">
+
+   
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/js/overlay.js"></script>
 
   </head>
 
@@ -33,6 +34,8 @@
 
     <div class="body_wrap">
       <div class="page_wrap">
+        <div class="menu_mobile_overlay" style="display: none;"></div>
+        {{>mobilesection}}
       
         {{{body}}}
         {{>footer}}
