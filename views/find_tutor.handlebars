@@ -173,199 +173,48 @@
       </label>
       <input type="hidden" name="q" value="/tutors/">
    </form>
+
+   <!---start of tutor profile--->
    <div class="tp-columns-container">
+
+      {{# each tutors}}
       <div class="tutor-plugin column-1-2">
+         {{# each this}}
          <div id="post-578" class="post-578 tutor type-tutor status-publish has-post-thumbnail hentry tutor_group-personal tutor_tag-coding tutor_tag-communication tutor_tag-computer-science">
             <div class="tp-single tp-post">
+
                <div class="tp-featured">
                   <img width="740" height="792" src="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor8-740x792.jpg" class="attachment-tutor-archive size-tutor-archive wp-post-image" alt="" srcset="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor8-740x792.jpg 740w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor8-280x300.jpg 280w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor8-370x397.jpg 370w" sizes="(max-width: 740px) 100vw, 740px">                        
                   <div class="tp-featured-overlay">
                      <div class="tp-price">
-                        <span class="tp-present-price"><span class="small">$</span>24                                                </span>
+                        <span class="tp-present-price"><span class="small">$</span>{{this.price}}                                                </span>
                         <span class="tp-period-price">hour                                        </span>
                      </div>
                   </div>
                </div>
+
                <div class="tp-content">
-                  <div class="tp-subjects"><span class="tp-tutor-subjects">Coding</span>, <span class="tp-tutor-subjects">Communication</span>, <span class="tp-tutor-subjects">Computer Science</span></div>
+                  <div class="tp-subjects">
+                  <span class="tp-tutor-subjects">{{this.subjects}}</span>
+                  </div>
                   <div class="tp-title">
-                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/josh-summers/">Josh Summers</a>
+                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/josh-summers/">{{this.name}}</a>
                   </div>
                   <div class="tp-read-more">
                      <a class="tp-title-read-more sc_button_hover_slide_left" href="http://smarthead.ancorathemes.com/tutors/josh-summers/">View Tutor</a>
                   </div>
                </div>
+
             </div>
+
          </div>
+         {{/each}}
       </div>
-      <div class="tutor-plugin column-1-2">
-         <div id="post-577" class="post-577 tutor type-tutor status-publish has-post-thumbnail hentry tutor_group-online tutor_group-personal tutor_tag-biology tutor_tag-business-study tutor_tag-chemistry">
-            <div class="tp-single tp-post">
-               <div class="tp-featured">
-                  <img width="740" height="792" src="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor7-740x792.jpg" class="attachment-tutor-archive size-tutor-archive wp-post-image" alt="" srcset="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor7-740x792.jpg 740w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor7-280x300.jpg 280w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor7-370x397.jpg 370w" sizes="(max-width: 740px) 100vw, 740px">                        
-                  <div class="tp-featured-overlay">
-                     <div class="tp-price">
-                        <span class="tp-present-price"><span class="small">$</span>20                                                </span>
-                        <span class="tp-period-price">hour                                        </span>
-                     </div>
-                  </div>
-               </div>
-               <div class="tp-content">
-                  <div class="tp-subjects"><span class="tp-tutor-subjects">Biology</span>, <span class="tp-tutor-subjects">Business Study</span>, <span class="tp-tutor-subjects">Chemistry</span></div>
-                  <div class="tp-title">
-                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/emma-landon/">Emma Landon</a>
-                  </div>
-                  <div class="tp-read-more">
-                     <a class="tp-title-read-more sc_button_hover_slide_left" href="http://smarthead.ancorathemes.com/tutors/emma-landon/">View Tutor</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="tutor-plugin column-1-2">
-         <div id="post-576" class="post-576 tutor type-tutor status-publish has-post-thumbnail hentry tutor_group-personal tutor_tag-architecture tutor_tag-spanish tutor_tag-world-history">
-            <div class="tp-single tp-post">
-               <div class="tp-featured">
-                  <img width="740" height="792" src="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor6-740x792.jpg" class="attachment-tutor-archive size-tutor-archive wp-post-image" alt="" srcset="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor6-740x792.jpg 740w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor6-280x300.jpg 280w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor6-370x397.jpg 370w" sizes="(max-width: 740px) 100vw, 740px">                        
-                  <div class="tp-featured-overlay">
-                     <div class="tp-price">
-                        <span class="tp-present-price"><span class="small">$</span>30                                                </span>
-                        <span class="tp-period-price">hour                                        </span>
-                     </div>
-                  </div>
-               </div>
-               <div class="tp-content">
-                  <div class="tp-subjects"><span class="tp-tutor-subjects">Architecture</span>, <span class="tp-tutor-subjects">Spanish</span>, <span class="tp-tutor-subjects">World History</span></div>
-                  <div class="tp-title">
-                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/sharon-brown/">Sharon Brown</a>
-                  </div>
-                  <div class="tp-read-more">
-                     <a class="tp-title-read-more sc_button_hover_slide_left" href="http://smarthead.ancorathemes.com/tutors/sharon-brown/">View Tutor</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="tutor-plugin column-1-2">
-         <div id="post-575" class="post-575 tutor type-tutor status-publish has-post-thumbnail hentry tutor_group-online tutor_tag-organic-chemistry tutor_tag-physics tutor_tag-social-studies">
-            <div class="tp-single tp-post">
-               <div class="tp-featured">
-                  <img width="740" height="792" src="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor5-740x792.jpg" class="attachment-tutor-archive size-tutor-archive wp-post-image" alt="" srcset="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor5-740x792.jpg 740w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor5-280x300.jpg 280w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor5-370x397.jpg 370w" sizes="(max-width: 740px) 100vw, 740px">                        
-                  <div class="tp-featured-overlay">
-                     <div class="tp-price">
-                        <span class="tp-present-price"><span class="small">$</span>25                                                </span>
-                        <span class="tp-period-price">hour                                        </span>
-                     </div>
-                  </div>
-               </div>
-               <div class="tp-content">
-                  <div class="tp-subjects"><span class="tp-tutor-subjects">Organic Chemistry</span>, <span class="tp-tutor-subjects">Physics</span>, <span class="tp-tutor-subjects">Social Studies</span></div>
-                  <div class="tp-title">
-                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/daniel-garrison/">Daniel Garrison</a>
-                  </div>
-                  <div class="tp-read-more">
-                     <a class="tp-title-read-more sc_button_hover_slide_left" href="http://smarthead.ancorathemes.com/tutors/daniel-garrison/">View Tutor</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="tutor-plugin column-1-2">
-         <div id="post-574" class="post-574 tutor type-tutor status-publish has-post-thumbnail hentry tutor_group-personal tutor_tag-english tutor_tag-marketing tutor_tag-mathematics">
-            <div class="tp-single tp-post">
-               <div class="tp-featured">
-                  <img width="740" height="792" src="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor4-740x792.jpg" class="attachment-tutor-archive size-tutor-archive wp-post-image" alt="" srcset="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor4-740x792.jpg 740w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor4-280x300.jpg 280w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor4-370x397.jpg 370w" sizes="(max-width: 740px) 100vw, 740px">                        
-                  <div class="tp-featured-overlay">
-                     <div class="tp-price">
-                        <span class="tp-present-price"><span class="small">$</span>34                                                </span>
-                        <span class="tp-period-price">hour                                        </span>
-                     </div>
-                  </div>
-               </div>
-               <div class="tp-content">
-                  <div class="tp-subjects"><span class="tp-tutor-subjects">English</span>, <span class="tp-tutor-subjects">Marketing</span>, <span class="tp-tutor-subjects">Mathematics</span></div>
-                  <div class="tp-title">
-                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/steven-collins/">Steven Collins</a>
-                  </div>
-                  <div class="tp-read-more">
-                     <a class="tp-title-read-more sc_button_hover_slide_left" href="http://smarthead.ancorathemes.com/tutors/steven-collins/">View Tutor</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="tutor-plugin column-1-2">
-         <div id="post-573" class="post-573 tutor type-tutor status-publish has-post-thumbnail hentry tutor_group-online tutor_tag-computer-science tutor_tag-creative-writing tutor_tag-engineering">
-            <div class="tp-single tp-post">
-               <div class="tp-featured">
-                  <img width="740" height="792" src="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3-740x792.jpg" class="attachment-tutor-archive size-tutor-archive wp-post-image" alt="" srcset="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3-740x792.jpg 740w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3-600x643.jpg 600w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3-280x300.jpg 280w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3-768x823.jpg 768w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3-955x1024.jpg 955w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3-370x397.jpg 370w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3-770x825.jpg 770w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor3.jpg 1001w" sizes="(max-width: 740px) 100vw, 740px">                        
-                  <div class="tp-featured-overlay">
-                     <div class="tp-price">
-                        <span class="tp-present-price"><span class="small">$</span>30                                                </span>
-                        <span class="tp-period-price">hour                                        </span>
-                     </div>
-                  </div>
-               </div>
-               <div class="tp-content">
-                  <div class="tp-subjects"><span class="tp-tutor-subjects">Computer Science</span>, <span class="tp-tutor-subjects">Creative Writing</span>, <span class="tp-tutor-subjects">Engineering</span></div>
-                  <div class="tp-title">
-                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/laura-connor/">Laura Connor</a>
-                  </div>
-                  <div class="tp-read-more">
-                     <a class="tp-title-read-more sc_button_hover_slide_left" href="http://smarthead.ancorathemes.com/tutors/laura-connor/">View Tutor</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="tutor-plugin column-1-2">
-         <div id="post-572" class="post-572 tutor type-tutor status-publish has-post-thumbnail hentry tutor_group-personal tutor_tag-chemistry tutor_tag-coding tutor_tag-communication">
-            <div class="tp-single tp-post">
-               <div class="tp-featured">
-                  <img width="740" height="792" src="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor2-740x792.jpg" class="attachment-tutor-archive size-tutor-archive wp-post-image" alt="" srcset="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor2-740x792.jpg 740w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor2-280x300.jpg 280w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor2-370x397.jpg 370w" sizes="(max-width: 740px) 100vw, 740px">                        
-                  <div class="tp-featured-overlay">
-                     <div class="tp-price">
-                        <span class="tp-present-price"><span class="small">$</span>34                                                </span>
-                        <span class="tp-period-price">hour                                        </span>
-                     </div>
-                  </div>
-               </div>
-               <div class="tp-content">
-                  <div class="tp-subjects"><span class="tp-tutor-subjects">Chemistry</span>, <span class="tp-tutor-subjects">Coding</span>, <span class="tp-tutor-subjects">Communication</span></div>
-                  <div class="tp-title">
-                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/taylor-jones/">Taylor Jones</a>
-                  </div>
-                  <div class="tp-read-more">
-                     <a class="tp-title-read-more sc_button_hover_slide_left" href="http://smarthead.ancorathemes.com/tutors/taylor-jones/">View Tutor</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="tutor-plugin column-1-2">
-         <div id="post-571" class="post-571 tutor type-tutor status-publish has-post-thumbnail hentry tutor_group-online tutor_tag-architecture tutor_tag-biology tutor_tag-business-study">
-            <div class="tp-single tp-post">
-               <div class="tp-featured">
-                  <img width="740" height="792" src="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1-740x792.jpg" class="attachment-tutor-archive size-tutor-archive wp-post-image" alt="" srcset="http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1-740x792.jpg 740w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1-600x643.jpg 600w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1-280x300.jpg 280w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1-768x823.jpg 768w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1-955x1024.jpg 955w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1-370x397.jpg 370w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1-770x825.jpg 770w, http://smarthead.ancorathemes.com/wp-content/uploads/2016/11/tutor1.jpg 1001w" sizes="(max-width: 740px) 100vw, 740px">                        
-                  <div class="tp-featured-overlay">
-                     <div class="tp-price">
-                        <span class="tp-present-price"><span class="small">$</span>20                                                </span>
-                        <span class="tp-period-price">hour                                        </span>
-                     </div>
-                  </div>
-               </div>
-               <div class="tp-content">
-                  <div class="tp-subjects"><span class="tp-tutor-subjects">Architecture</span>, <span class="tp-tutor-subjects">Biology</span>, <span class="tp-tutor-subjects">Business Study</span></div>
-                  <div class="tp-title">
-                     <a class="tp-title-link" href="http://smarthead.ancorathemes.com/tutors/aisha-nguyen/">Aisha Nguyen</a>
-                  </div>
-                  <div class="tp-read-more">
-                     <a class="tp-title-read-more sc_button_hover_slide_left" href="http://smarthead.ancorathemes.com/tutors/aisha-nguyen/">View Tutor</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+      {{/each}}       
+   </div><!----end of tutor profile--->
+
+
+
+
+
 </div>
-<!-- </.content> -->
