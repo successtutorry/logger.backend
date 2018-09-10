@@ -6,6 +6,7 @@ var smtpTransport = require('nodemailer-smtp-transport');
 const mailer = require('../misc/mailer');
 
 const ContactusForm = require('../models/contactusform');
+const tutor = require('../models/tutors');
 
 
 
@@ -33,9 +34,19 @@ router.route('/inner')
   .get((req, res) => {
     res.render('features');
   });
+
 router.route('/find_tutor')
   .get((req, res) => {
-    res.render('find_tutor');
+    tutor.find( { }, function(err, docs){
+      var tutorChunks = [];
+      var chunkSize = 3;
+      for(var i=0; i < docs.length; i+= chunkSize){
+          tutorChunks.push(docs.slice(i, i+chunkSize));
+      }
+        res.render('find_tutor', {  tutors: tutorChunks });
+      
+    });
+   
   });
 
 router.route('/become_tutor')
