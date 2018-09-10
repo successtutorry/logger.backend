@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.route('/inner')
   .get((req, res) => {
-    res.render('inner');
+    res.render('news');
   });
 
   router.route('/features')
