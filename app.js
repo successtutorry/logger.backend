@@ -4,6 +4,28 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressHandlebars = require('express-handlebars');
+const mongoose = require('mongoose');
+const passport  = require('passport');
+
+
+mongoose.Promise = global.Promise;
+
+
+//database connection 
+
+
+
+
+mongoose.connect('mongodb://root:root123@ds251362.mlab.com:51362/tutorry', { useNewUrlParser: true}, function(err){
+
+  if(err){
+    console.log(err);
+  } else {
+    console.log('Connected to the database');
+  }
+});
+
+
 const app = express();
 app.use(morgan('dev'));
 
@@ -19,5 +41,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+
+  res.render('notFound');
+});
 
 app.listen(4000, () => console.log('Server started listening on port 4000!'));
