@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+const mailer = require('../misc/mailer');
 
 const ContactusForm = require('../models/contactusform');
 
@@ -46,6 +49,7 @@ router.route('/become_tutor')
   }).post((req, res) => {
     
       const result = Joi.validate(req.body, contactusSchema);
+      const contact_message = result.value.message;
       if (result.error) {
           console.log(result.error);
         
@@ -56,6 +60,21 @@ router.route('/become_tutor')
       const newContact = new ContactusForm(result.value); 
       console.log('newContact', newContact);
       newContact.save();
+
+      const html = `Hi there,
+      <br/>
+      Thank you for contacting us 
+      </br></br>     
+      We have recieved your message.
+      </br>
+      <b>${contact_message}</b>
+      <br/>     
+      We will reach back to you soon.
+      <br/><br/>
+      Have a pleasant day.` 
+
+      // Send email
+      mailer.sendEmail('tutorry.in@gmail.com', result.value.email, 'Message', html);
       res.redirect('/users/contacts');
 
 
