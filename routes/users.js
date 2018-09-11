@@ -24,4 +24,9 @@ router.route('/become_tutor')
   .get((req, res) => {
     res.render('contacts');
   })
+
+  router.route('/register')
+  .get((req, res) => {
+    res.render('register');
+  });
 module.exports = router;
