@@ -1,10 +1,14 @@
+
+console.log('entered user.js');
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 const mailer = require('../misc/mailer');
-
+var url = require('url');
+const bodyParser = require('body-parser');
+ 
 const ContactusForm = require('../models/contactusform');
 const tutor = require('../models/tutors');
 
@@ -21,13 +25,43 @@ const contactusSchema = Joi.object().keys({
 
 
 
+/*router.route('/biology')  
+  .get((req, res) => {
+    var query = {subjects:"CHEMISTRY"};
+    tutor.find( {query}, function(err, docs){
+      var biologyChunks = [];
+      var chunkSize = 3;
+      for(var i=0; i < docs.length; i+= chunkSize){
+          biologyChunks.push(docs.slice(i, i+chunkSize));
+      }
+        res.render('find_tutor', {  tutors: biologyChunks });
+      
+    });
+  });*/
 
+ /* router.route('/sort')
+  .get((req,res) => {
 
+    console.log('abc')
+    console.log(req.searchParams.get('orderby'));
+    res.render('find_tutor');
+
+  });*/
 
 
 router.route('/inner')
   .get((req, res) => {
     res.render('news');
+  });
+
+  router.route('/login')
+  .get((req, res) => {
+    res.render('login');
+  });
+
+  router.route('/register')
+  .get((req, res) => {
+    res.render('register');
   });
 
   router.route('/features')
@@ -36,18 +70,54 @@ router.route('/inner')
   });
 
 router.route('/find_tutor')
-  .get((req, res) => {
-    tutor.find( { }, function(err, docs){
-      var tutorChunks = [];
-      var chunkSize = 3;
-      for(var i=0; i < docs.length; i+= chunkSize){
-          tutorChunks.push(docs.slice(i, i+chunkSize));
-      }
-        res.render('find_tutor', {  tutors: tutorChunks });
-      
-    });
-   
+  .get((req, res, next) => { 
+
+
+            tutor.find( {}, function(err, docs){
+            var tutorChunks = [];
+            var chunkSize = 3;
+            for(var i=0; i < docs.length; i+= chunkSize){
+                tutorChunks.push(docs.slice(i, i+chunkSize));
+            }
+              res.render('find_tutor', {  tutors: tutorChunks });
+            
+          }).sort({price:-1});
+
   });
+
+  router.route('/maths')
+  .get((req, res, next) => { 
+
+
+            tutor.find( {subjects:['Maths']}, function(err, docs){
+            var tutorChunks = [];
+            var chunkSize = 3;
+            for(var i=0; i < docs.length; i+= chunkSize){
+                tutorChunks.push(docs.slice(i, i+chunkSize));
+            }
+              res.render('find_tutor', {  tutors: tutorChunks });
+            
+          }).sort({price:-1});
+
+  });
+
+  router.route('/chemistry')
+  .get((req, res, next) => { 
+
+
+            tutor.find( {subjects:['Science'], location:'Thane'}, function(err, docs){
+            var tutorChunks = [];
+            var chunkSize = 3;
+            for(var i=0; i < docs.length; i+= chunkSize){
+                tutorChunks.push(docs.slice(i, i+chunkSize));
+            }
+              res.render('find_tutor', {  tutors: tutorChunks });
+            
+          }).sort({price:-1});
+
+  });
+
+
 
 router.route('/become_tutor')
   .get((req, res) => {
@@ -92,4 +162,10 @@ router.route('/become_tutor')
   });
 
 
+
+
+
 module.exports = router;
+
+console.log('leaving users.js');
+
