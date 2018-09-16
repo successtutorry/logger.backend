@@ -25,10 +25,10 @@ const contactusSchema = Joi.object().keys({
 
 
 
-/*router.route('/biology')  
+router.route('/maths')  
   .get((req, res) => {
-    var query = {subjects:"CHEMISTRY"};
-    tutor.find( {query}, function(err, docs){
+   
+    tutor.find( {subjects:['Maths']}, function(err, docs){
       var biologyChunks = [];
       var chunkSize = 3;
       for(var i=0; i < docs.length; i+= chunkSize){
@@ -37,7 +37,7 @@ const contactusSchema = Joi.object().keys({
         res.render('find_tutor', {  tutors: biologyChunks });
       
     });
-  });*/
+  });
 
  /* router.route('/sort')
   .get((req,res) => {
@@ -47,6 +47,25 @@ const contactusSchema = Joi.object().keys({
     res.render('find_tutor');
 
   });*/
+
+  router.route('/gettutors')
+  .get((req,res) =>{
+
+    const subject = req.query.n;
+
+     tutor.find( {subjects:subject}, function(err, docs){
+      var subjectChunks = [];
+      var chunkSize = 3;
+      for(var i=0; i < docs.length; i+= chunkSize){
+          subjectChunks.push(docs.slice(i, i+chunkSize));
+      }
+        res.render('find_tutor', {  tutors: subjectChunks });
+      
+    });
+
+   
+    
+  });
 
 
 router.route('/inner')
@@ -73,7 +92,7 @@ router.route('/find_tutor')
   .get((req, res, next) => { 
 
 
-            tutor.find( {}, function(err, docs){
+            tutor.find( {$or: [{subjects:req.query.n}, {zipcode:req.query.z}]}, function(err, docs){
             var tutorChunks = [];
             var chunkSize = 3;
             for(var i=0; i < docs.length; i+= chunkSize){
