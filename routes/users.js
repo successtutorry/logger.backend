@@ -68,6 +68,12 @@ router.route('/maths')
   });
 
 
+  router.route('/viewtutor')
+  .get((req, res) => {
+    res.render('viewtutor');
+  });
+
+
 router.route('/inner')
   .get((req, res) => {
     res.render('news');
@@ -161,6 +167,9 @@ router.route('/become_tutor')
       console.log('newContact', newContact);
       newContact.save();
 
+      var rand = Math.floor((Math.random() * 100) + 54);
+      const link = "http://127.0.0.1:4000/users/verify?id="+result.value.email;
+
       const html = `Hi there,
       <br/>
       Thank you for contacting us 
@@ -168,7 +177,10 @@ router.route('/become_tutor')
       We have recieved your message.
       </br>
       <b>${contact_message}</b>
-      <br/>     
+      <br/> </br>
+
+      <a href="${link}">${contact_message}</a> 
+      </br></br>   
       We will reach back to you soon.
       <br/><br/>
       Have a pleasant day.` 
@@ -177,6 +189,30 @@ router.route('/become_tutor')
       mailer.sendEmail('tutorry.in@gmail.com', result.value.email, 'Message', html);
       res.redirect('/users/contacts');
 
+
+  });
+
+  router.route('/verify')
+  .get((req,res)=>{
+
+    console.log('request recieved');
+    const useremail = req.query.id;
+
+   tutor.updateOne(
+  { email: useremail },
+  {
+    $set: { price: "100" }
+   
+  },function(err,res){
+
+    if(err){
+      throw err;
+    }
+    else{
+      console.log('one document updated');
+    }
+  }
+);
 
   });
 
