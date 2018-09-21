@@ -3,12 +3,11 @@ console.log('entered user.js');
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-var nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
+const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
 const mailer = require('../misc/mailer');
-var url = require('url');
+const url = require('url');
 const bodyParser = require('body-parser');
- 
 const ContactusForm = require('../models/contactusform');
 const tutor = require('../models/tutors');
 
@@ -25,35 +24,26 @@ const contactusSchema = Joi.object().keys({
 
 
 
-router.route('/maths')  
+router.route('/subject')  
   .get((req, res) => {
+
+     console.log(req.query.subject);
    
-    tutor.find( {subjects:['Maths']}, function(err, docs){
-      var biologyChunks = [];
-      var chunkSize = 3;
-      for(var i=0; i < docs.length; i+= chunkSize){
-          biologyChunks.push(docs.slice(i, i+chunkSize));
-      }
-        res.render('find_tutor', {  tutors: biologyChunks });
-      
-    });
-  });
+    tutor.find( {subjects:req.query.subject}, function(err, docs){
+     var tutorChunks = [];
+            var chunkSize = 3;
+            for(var i=0; i < docs.length; i+= chunkSize){
+                tutorChunks.push(docs.slice(i, i+chunkSize));
+            }
+              res.render('find_tutor', {  tutors: tutorChunks });
+      });
+});
 
- /* router.route('/sort')
-  .get((req,res) => {
 
-    console.log('abc')
-    console.log(req.searchParams.get('orderby'));
-    res.render('find_tutor');
-
-  });*/
-
-  router.route('/gettutors')
+   router.route('/find_tutor')
   .get((req,res) =>{
 
-    const subject = req.query.n;
-
-     tutor.find( {subjects:subject}, function(err, docs){
+     tutor.find( { }, function(err, docs){
       var subjectChunks = [];
       var chunkSize = 3;
       for(var i=0; i < docs.length; i+= chunkSize){
@@ -61,11 +51,89 @@ router.route('/maths')
       }
         res.render('find_tutor', {  tutors: subjectChunks });
       
-    });
+    });   
+  });
+
+  router.route('/gettutors')
+  .get((req, res, next) => { 
+
+if((req.query.n!=null)&&(req.query.z!=null)){
+
+
+console.log(req.query.n);
+console.log(req.query.z);
+
+
+
+}
+    
+else{
+
+
+            tutor.find( {$or:[{subjects:req.query.n}, {zipcode:req.query.z}]}, function(err, docs){
+            var tutorChunks = [];
+            var chunkSize = 3;
+            for(var i=0; i < docs.length; i+= chunkSize){
+                tutorChunks.push(docs.slice(i, i+chunkSize));
+            }
+              res.render('find_tutor', {  tutors: tutorChunks });
+            
+          }).sort({price:-1});
+
+          }
+
+          
+
+
+  });
+
+ 
+
+
+  /*router.route('/filter')
+  .get((req,res)=>{
+
+
+    console.log(req.query.orderby);
+
+    if(req.query.orderby=='price-desc'){
+
+
+       tutor.find( { }, function(err, docs){
+      var subjectChunks = [];
+      var chunkSize = 3;
+      for(var i=0; i < docs.length; i+= chunkSize){
+          subjectChunks.push(docs.slice(i, i+chunkSize));
+      }
+        res.render('find_tutor', {  tutors: subjectChunks });
+      
+    }).sort({price:+1});
 
    
-    
-  });
+
+
+     }
+
+
+     if(req.query.orderby=='price'){
+
+
+      tutor.find( { }, function(err, docs){
+      var subjectChunks = [];
+      var chunkSize = 3;
+      for(var i=0; i < docs.length; i+= chunkSize){
+          subjectChunks.push(docs.slice(i, i+chunkSize));
+      }
+        res.render('find_tutor', {  tutors: subjectChunks });
+      
+    }).sort({price:-1});
+
+  
+     }
+
+  });*/
+
+ 
 
 
   router.route('/viewtutor')
@@ -94,55 +162,11 @@ router.route('/inner')
     res.render('features');
   });
 
-router.route('/find_tutor')
-  .get((req, res, next) => { 
 
 
-            tutor.find( {$or: [{subjects:req.query.n}, {zipcode:req.query.z}]}, function(err, docs){
-            var tutorChunks = [];
-            var chunkSize = 3;
-            for(var i=0; i < docs.length; i+= chunkSize){
-                tutorChunks.push(docs.slice(i, i+chunkSize));
-            }
-              res.render('find_tutor', {  tutors: tutorChunks });
-            
-          }).sort({price:-1});
+ 
 
-  });
-
-  router.route('/maths')
-  .get((req, res, next) => { 
-
-
-            tutor.find( {subjects:['Maths']}, function(err, docs){
-            var tutorChunks = [];
-            var chunkSize = 3;
-            for(var i=0; i < docs.length; i+= chunkSize){
-                tutorChunks.push(docs.slice(i, i+chunkSize));
-            }
-              res.render('find_tutor', {  tutors: tutorChunks });
-            
-          }).sort({price:-1});
-
-  });
-
-  router.route('/chemistry')
-  .get((req, res, next) => { 
-
-
-            tutor.find( {subjects:['Science'], location:'Thane'}, function(err, docs){
-            var tutorChunks = [];
-            var chunkSize = 3;
-            for(var i=0; i < docs.length; i+= chunkSize){
-                tutorChunks.push(docs.slice(i, i+chunkSize));
-            }
-              res.render('find_tutor', {  tutors: tutorChunks });
-            
-          }).sort({price:-1});
-
-  });
-
-
+  
 
 router.route('/become_tutor')
   .get((req, res) => {

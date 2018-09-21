@@ -9,6 +9,7 @@ const passport  = require('passport');
 const http = require('http');
 const requestIp = require('request-ip');
 const where = require('node-where');
+var iplocation = require('iplocation');
 
 
 mongoose.Promise = global.Promise;
@@ -44,9 +45,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*const ipMiddleware = function(req, res, next) {
     const clientIp = requestIp.getClientIp(req); 
     next();
-};
+};*/
 
-app.use(requestIp.mw())
+/*app.use(requestIp.mw())
 app.use(function(req, res) {
     const ip = req.clientIp;
     console.log(ip);
@@ -54,13 +55,26 @@ app.use(function(req, res) {
     res.end(ip);
 });
 
- where.is('192.168.0.1', function(err, result) {
+ where.is('10.14.28.230', function(err, result) {
   if (result) {
   
+  console.log(result);
     console.log('Country: ' + result.get('country'));
   
   }
 });*/
+
+/*iplocation('198.168.1.207', function (error, res) {
+ 
+ if(error){
+  console.log(error);
+}
+  else{
+    console.log(res);
+  }
+ 
+  });*/
+
 
 
 

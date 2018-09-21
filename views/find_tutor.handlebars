@@ -65,7 +65,7 @@
                            <li id="menu-item-549" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-549"><a href="#"><span>Shop</span></a></li>
                         </ul>
                      </li>
-                     <li id="menu-item-548" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-548"><a href="/users/find_tutor"><span>Find a Tutor</span></a></li>
+                     <li id="menu-item-548" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-548"><a href="/users/gettutors"><span>Find a Tutor</span></a></li>
                      <li id="menu-item-164" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164"><a href="/users/become_tutor"><span>Become a Tutor</span></a></li>
                      <li id="menu-item-119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-119"><a href="/users/inner" class="sf-with-ul"><span>News</span></a>
                      <li id="menu-item-165" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-128 current_page_item menu-item-165"><a href="/users/contacts"><span>Contacts</span></a></li>
@@ -106,7 +106,7 @@
          <h4 class="tp-form-title">Tutor</h4>
       </div>
       <div class="tp-form">
-         <form role="search" action="/users/find_tutor" method="get" id="tutor-search-form" class="tutor-plugin tutor-plugin-form-search">
+         <form role="search" action="/users/gettutors" method="get" id="tutor-search-form" class="tutor-plugin tutor-plugin-form-search">
             <input type="hidden" name="post_type" value="tutor">
             <input type="hidden" name="s" value="">
             <input type="text" name="n" placeholder="Enter a Subject" value="" autocomplete="off">
@@ -139,8 +139,8 @@
                <a href="http://smarthead.ancorathemes.com/tutor_tag/engineering/" class="tag-cloud-link tag-link-73 tag-link-position-9 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Engineering (1 item)">Engineering</a>
                <a href="http://smarthead.ancorathemes.com/tutor_tag/english/" class="tag-cloud-link tag-link-56 tag-link-position-10 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="English (1 item)">English</a>
                <a href="http://smarthead.ancorathemes.com/tutor_tag/marketing/" class="tag-cloud-link tag-link-70 tag-link-position-11 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Marketing (1 item)">Marketing</a>
-               <a href="/users/maths" class="tag-cloud-link tag-link-71 tag-link-position-12 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Mathematics (1 item)">Mathematics</a>
-               <a href="http://smarthead.ancorathemes.com/tutor_tag/organic-chemistry/" class="tag-cloud-link tag-link-67 tag-link-position-13 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Organic Chemistry (1 item)">Organic Chemistry</a>
+               <a href="/users/gettutors/?n=Maths" class="tag-cloud-link tag-link-71 tag-link-position-12 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Mathematics (1 item)">Mathematics</a>
+               <a href="/users/gettutors/?n=Chemistry" class="tag-cloud-link tag-link-67 tag-link-position-13 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Organic Chemistry (1 item)">Organic Chemistry</a>
                <a href="http://smarthead.ancorathemes.com/tutor_tag/physics/" class="tag-cloud-link tag-link-68 tag-link-position-14 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Physics (1 item)">Physics</a>
                <a href="http://smarthead.ancorathemes.com/tutor_tag/social-studies/" class="tag-cloud-link tag-link-69 tag-link-position-15 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Social Studies (1 item)">Social Studies</a>
                <a href="http://smarthead.ancorathemes.com/tutor_tag/spanish/" class="tag-cloud-link tag-link-54 tag-link-position-16 sc_button_hover_slide_left" style="font-size: 8pt;" aria-label="Spanish (1 item)">Spanish</a>
@@ -163,7 +163,7 @@
    <!-- /.sidebar -->
 </div>
 <div class="content">
-   <form class="tutor-plugin-ordering" method="get">
+   <form action='/users/filter' class="tutor-plugin-ordering" method="get">
       <label class="select_container">
          <select name="orderby" class="orderby filled">
             <option value="default" selected="selected">Default sorting</option>
