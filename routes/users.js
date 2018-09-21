@@ -29,4 +29,30 @@ router.route('/become_tutor')
   .get((req, res) => {
     res.render('register');
   });
+  router.route('/profile')
+  .get((req, res) => {
+    res.render('profile');
+  });
+ router.route('/personal')
+  .get((req, res) => {
+    res.render('personal');
+  });
+
+  router.route('/overlayform')
+  .get((req, res) => {
+    res.render('overlayform');
+  });
+   router.route('/education')
+  .get((req, res) => {
+    res.render('education');
+  });
+   router.route('/work')
+  .get((req, res) => {
+    res.render('work');
+  });
+   router.route('/teaching')
+  .get((req, res) => {
+    res.render('teaching');
+  });
+
 module.exports = router;
