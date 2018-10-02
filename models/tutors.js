@@ -6,7 +6,9 @@ const tutorSchema = new Schema({
 	price: String,
 	email: String,
 	name: String,
-	subjects:String
+	subjects:String,
+	location:String,
+	
 }, {
 
 	timestamps: { // this will give us the detail when the form was send.
