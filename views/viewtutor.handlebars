@@ -1,57 +1,10 @@
-<div class="tp-info">
-   <h2 class="tp-single-title">Sharon Brown</h2>
-   <div class="tp-price">
-      <span class="tp-present-price"><span class="small">$</span>30                        </span>
-      <span class="tp-period-price">hour                        </span>
-   </div>
-   <div class="tp-rating"><span class="tp-rating-star tutor-icon-bookmark-star"></span><span class="tp-rating-star tutor-icon-bookmark-star"></span><span class="tp-rating-star tutor-icon-bookmark-star"></span><span class="tp-rating-star tutor-icon-bookmark-star"></span><span class="tp-rating-star tutor-icon-bookmark-star"></span></div>
-   <div class="tp-biography">My goal as a teacher or tutor is to provide access to quality education. Standartized tests, for better or worse, are the current gatekeepers in our society to a shrinking middle class. Suspendisse a sapien consectetur justo pulvinar egestas. Sed imperdiet iaculis arcu, porta semper lacus volutpat et. Aenean ullamcorper tellus et metus facilisis posuere id vitae libero. Nam quis ipsum in metus sollicitudin volutpat eu eget nunc.</div>
-   <div class="tp-subjects"><span class="label">Subjects: </span><a href="http://smarthead.ancorathemes.com/tutor_tag/architecture/" class="tp-tutor-subjects">Architecture</a>, <a href="http://smarthead.ancorathemes.com/tutor_tag/spanish/" class="tp-tutor-subjects">Spanish</a>, <a href="http://smarthead.ancorathemes.com/tutor_tag/world-history/" class="tp-tutor-subjects">World History</a></div>
-   <div class="tp-single-contact-form">
-      <div class="sc_item_button sc_button_wrap">
-         <a href="#popup_message_form" class="sc_button sc_button_default sc_button_size_normal sc_button_icon_left sc_button_hover_slide_left trx_addons_popup_link inited">
-         <span class="sc_button_text"><span class="sc_button_title">Message</span></span>
-         </a>
-      </div>
-      <div id="popup_message_form" class="sc_popup sc_popup_default mfp-hide inited">
-         <div class="tp-single-contact-form-wrap">
-            <div id="sc_form_single-contact-form" class="sc_form sc_form_default sc_align_default">
-               <form class="tp_sc_form_form inited" method="post" action="http://smarthead.ancorathemes.com/wp-admin/admin-ajax.php">
-                  <div class="sc_form_details tp-columns-container">
-                     <input type="text" name="name_tutor" id="name_tutor" value="Sharon Brown" aria-required="true" placeholder="Sharon Brown">
-                     <div class="column-1-2">
-                        <label class="sc_form_field sc_form_field_name required">
-                        <span class="sc_form_field_wrap"><input type="text" name="name" id="name" value="" aria-required="true" placeholder="Your name *"></span>
-                        </label>
-                     </div>
-                     <div class="column-1-2">
-                        <label class="sc_form_field sc_form_field_email required">
-                        <span class="sc_form_field_wrap"><input type="text" name="email" id="email" value="" aria-required="true" placeholder="Your e-mail *"></span>
-                        </label>
-                     </div>
-                     <div class="column-1-2">
-                        <label class="sc_form_field sc_form_field_phone required">
-                        <span class="sc_form_field_wrap"><input type="text" name="phone" id="phone" value="" placeholder="Your phone *"></span>
-                        </label>
-                     </div>
-                     <div class="column-1-2">
-                        <label class="sc_form_field sc_form_field_subject required">
-                           <select name="subject" id="subject" class="filled">
-                              <option value="Architecture">Architecture</option>
-                              <option value="Spanish">Spanish</option>
-                              <option value="World History">World History</option>
-                           </select>
-                        </label>
-                     </div>
-                  </div>
-                  <label class="sc_form_field sc_form_field_message">
-                  <span class="sc_form_field_wrap"><textarea name="message" id="message" placeholder="Your message"></textarea></span>
-                  </label>
-                  <div class="sc_form_field sc_form_field_button"><button class="sc_button_hover_slide_left">Send Message</button></div>
-                  <div class="tutor_plugin_message_box sc_form_result"></div>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
+<div style="padding-left:20px">
+   <h4>Name:{{name}}</h4>
+   <h4>{{rating}} out of 5</h4>
+   <h4>Subject:{{subjects}}</h4>
+   <h4>Message:{{message}}</h4>
+   <h4>Location:{{location}}</h4>
+   <button type="button" style="none">MESSAGE</button>
+   <button type="button" style="none">EMAIL</button>
+
 </div>

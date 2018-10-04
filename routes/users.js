@@ -399,7 +399,21 @@ const contactusSchema = Joi.object().keys({
 
   router.route('/viewtutor')
   .get((req, res) => {
-    res.render('viewtutor');
+   
+    var tutor_email = req.query.email;
+    //console.log(req.query.current_tutor)
+   tutor.findOne({ email:tutor_email },function(req,result){
+
+
+     var current_tutor = result.email;
+
+      
+      res.render('viewtutor', { name: result.name, email: result.email, location: result.location, rating: result.rating, subjects: result.subjects });
+
+
+
+    });
+     
   });
 
 
