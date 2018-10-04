@@ -8,6 +8,9 @@ const tutorSchema = new Schema({
 	name: String,
 	subjects:String,
 	location:String,
+	imagePath:String
+
+	
 	
 }, {
 

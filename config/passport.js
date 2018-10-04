@@ -32,6 +32,7 @@ passport.use('local', new LocalStrategy({
 
         // 2) Check if the password is correct
         const isValid = User.comparePasswords(password, user.password);
+        console.log(isValid);
         if(!isValid){
 
             return done(null, false, { message: 'Unknown Password' });

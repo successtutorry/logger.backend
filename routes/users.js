@@ -49,6 +49,82 @@ const isNotAuthenticated = (req, res, next) => {
 };
 
 
+/*router.route('/forgotPass')
+.get(isNotAuthenticated,(req,res)=>{
+
+  res.render('passwordRecovery');
+
+}).post(isNotAuthenticated,(req,res)=>{
+
+var emailId = req.body.email;
+
+const userExists = User.findOne({'email': req.body.email});
+
+if(userExists){
+
+
+  const link = "http://127.0.0.1:4000/users/changePassword?email="+req.body.email;
+     
+     
+       const html = `
+      Please click on the following link to reset your password
+      <br/>
+      <br/>
+       <a href="${link}">please click this</a>
+      <br/><br/>
+      Have a pleasant day.` 
+
+      // Send email
+      mailer.sendEmail('tutorry.in@gmail.com', req.body.email, '', html);
+
+      res.redirect('/users/login');
+}
+
+else{
+
+  console.log('user does not exists or incorrect email id...');
+}
+
+});
+
+router.route('/changePassword')
+.get((req,res)=>{
+
+  console.log(req.query.email);
+  res.render('resetPassword');
+
+}).post((req,res)=>{
+
+  if(req.body.password==req.body.confirmationPassword){
+
+
+    const hashed = User.hashPassword(req.body.password);
+
+  const changedPassword =  User.updateOne(
+  { email: req.query.email },
+  {
+    $set: { password: hashed }
+   
+  }
+
+  );
+
+  
+
+  if(changedPassword){
+    res.redirect('login');
+    return;
+  }
+  else{
+
+    console.log('some error in changing password');
+  }
+
+}
+
+});*/
+
+
 // this route is executed when the user clicks the signup button or directly 
 // puts register link in the browser.
 
@@ -139,16 +215,17 @@ router.route('/register')
   
 
 
- router.route('/verify')
+ /*router.route('/verify')
   .get(isNotAuthenticated,(req,res)=>{
 
     console.log('request recieved');
     const token = req.query.id;
+    console.log(token);
 
-  const activated =  User.updateOne(
+  const activated =  User.update(
   { secretToken: token },
   {
-    $set: { active: true }
+    $set: { 'username': "suri" }
    
   }
 
@@ -165,7 +242,29 @@ router.route('/register')
     console.log('some error in verification');
   }
 
-});
+});*/
+
+router.route('/verify')
+  .get((req,res)=>{
+     console.log('request recieved');
+    const token = req.query.id;
+    User.updateOne(
+  { secretToken: token },
+  {
+    $set: { active: true }
+   
+  },function(err,res){
+     if(err){
+      throw err;
+    }
+    else{
+      res.redirect('/users/login');
+      return;
+    }
+  }
+);
+   });
+
 
 
   // this route is executed when the user tries to login
@@ -298,14 +397,6 @@ const contactusSchema = Joi.object().keys({
 });
 
 
-
-
-
-
- 
- 
-
-
   router.route('/viewtutor')
   .get((req, res) => {
     res.render('viewtutor');
@@ -317,26 +408,9 @@ router.route('/inner')
     res.render('news');
   });
 
-  router.route('/login')
-  .get((req, res) => {
-    res.render('login');
-  });
-
-  router.route('/register')
-  .get((req, res) => {
-    res.render('register');
-  });
-
-  router.route('/features')
-  .get((req, res) => {
-    res.render('features');
-  });
-
-
-
- 
-
   
+
+
 
 router.route('/become_tutor')
   .get((req, res) => {
@@ -387,54 +461,7 @@ router.route('/become_tutor')
   });
 
   
-   /*router.route('/filter')
-  .get((req,res)=>{
-
-
-    console.log(req.query.orderby);
-
-    if(req.query.orderby=='price-desc'){
-
-
-       tutor.find( { }, function(err, docs){
-      var subjectChunks = [];
-      var chunkSize = 3;
-      for(var i=0; i < docs.length; i+= chunkSize){
-          subjectChunks.push(docs.slice(i, i+chunkSize));
-      }
-        res.render('find_tutor', {  tutors: subjectChunks });
-      
-    }).sort({price:+1});
-
-   
-
-
-     }
-
-
-     if(req.query.orderby=='price'){
-
-
-      tutor.find( { }, function(err, docs){
-      var subjectChunks = [];
-      var chunkSize = 3;
-      for(var i=0; i < docs.length; i+= chunkSize){
-          subjectChunks.push(docs.slice(i, i+chunkSize));
-      }
-        res.render('find_tutor', {  tutors: subjectChunks });
-      
-    }).sort({price:-1});
-
   
-     }
-
-  });*/
-
-
-
-
-
-
 module.exports = router;
 
 console.log('leaving users.js');
