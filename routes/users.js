@@ -14,6 +14,7 @@ const request = require('request');
 const User = require('../models/user');
 const passport = require('passport');
 const randomstring = require('randomstring');
+var springedge = require('springedge');
 
 const userSchema = Joi.object().keys({
   email: Joi.string().email().required(),
@@ -21,6 +22,33 @@ const userSchema = Joi.object().keys({
   password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
   confirmationPassword: Joi.any().valid(Joi.ref('password')).required(),
   type: Joi.string().required()
+});
+
+
+router.route('/message')
+.get((req,res)=>{
+
+  var number = '918879833819';
+
+  console.log('message button clicked');
+  var params = {
+  'apikey': '6gds7p61a52v92b36d61sqem4klx2qjs', // API Key
+  'sender': 'SEDEMO', // Sender Name
+  'to': [
+    number  //Moblie Number
+  ],
+  'message': 'Hi, this is a test message from TUTORRY.IN',
+  'format': 'json'
+};
+ 
+springedge.messages.send(params, 5000, function (err, response) {
+  if (err) {
+    return console.log(err);
+  }
+  console.log(response);
+});
+
+
 });
 
 
@@ -404,7 +432,7 @@ const contactusSchema = Joi.object().keys({
     //console.log(req.query.current_tutor)
    tutor.findOne({ email:tutor_email },function(req,result){
 
-
+    console.log(result);
      var current_tutor = result.email;
 
       

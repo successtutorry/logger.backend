@@ -48,9 +48,12 @@ module.exports.hashPassword =  async(password) => {
 
 module.exports.comparePasswords = async (inputPassword, hashedPassword) => {
 
+	console.log("in the comparePasswords function "+inputPassword);
+	console.log("in the comparePasswords function "+hashedPassword);
+
 	try{
 
-	return	bcrypt.compare(inputPassword, hashedPassword );
+	return await bcrypt.compare(inputPassword, hashedPassword );
 	
 	} catch(error){
 

@@ -20,18 +20,22 @@ passport.deserializeUser(async (id, done) => {
 passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
+
     
     passReqToCallback: false
 }, async (email, password, done) => {
     try {
+
+        console.log("1. user entered"+ password);
         // 1) Check if the email already exists
         const user = await User.findOne({ 'email': email });
         if (!user) {
             return done(null, false, { message: 'Unknown User' });
         }
 
+        console.log("2. password from database"+ user.password);
         // 2) Check if the password is correct
-        const isValid = User.comparePasswords(password, user.password);
+        const isValid = await User.comparePasswords(password, user.password);
         console.log(isValid);
         if(!isValid){
 
