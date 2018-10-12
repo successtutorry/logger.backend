@@ -8,7 +8,7 @@
             <li><a rel="alternate" hreflang="en" href="http://smarthead.ancorathemes.com/tutors/" class="active">English</a></li>
          </ul>
       </div>
-      <a href="/users/logout" class="trx_addons_popup_link trx_addons_login_link  inited"><span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt"></span><span class="sc_layouts_item_details sc_layouts_login_details">Logout</span></a>        
+      <a href="/users/logout" class="trx_addons_popup_link trx_addons_login_link  inited"><span class="sc_layouts_item_icon sc_layouts_login_icon trx_addons_icon-user-alt"></span><span class="sc_layouts_item_details sc_layouts_login_details">Logout</span></a>
    </div>
 </div>
 
@@ -59,3 +59,16 @@
 </div>
 
 </header>
+<p>Welcome {{username}}</p>
+
+<form class="form-signin" action="/users/profile" method="POST">
+  <h2 class="form-signin-heading">Please complete profile</h2>
+
+  <label for="inputAge" class="sr-only">Age</label>
+  <input type="text" id="inputAge" name="age" class="form-control" placeholder="Age" required autofocus>
+
+  <br/>
+
+  <button class="btn btn-lg btn-default btn-block" type="submit">Submit</button>
+
+</form>
