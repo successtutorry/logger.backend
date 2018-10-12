@@ -19,7 +19,7 @@ request({
   }
   else{
 
-    
+    console.log(body);
     city = body.city;
      console.log(body.city);
   }
