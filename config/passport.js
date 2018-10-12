@@ -21,28 +21,28 @@ passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
 
-    
+
     passReqToCallback: false
 }, async (email, password, done) => {
     try {
 
-        console.log("1. user entered"+ password);
+
         // 1) Check if the email already exists
         const user = await User.findOne({ 'email': email });
         if (!user) {
             return done(null, false, { message: 'Unknown User' });
         }
 
-        console.log("2. password from database"+ user.password);
+
         // 2) Check if the password is correct
         const isValid = await User.comparePasswords(password, user.password);
-        console.log(isValid);
+      
         if(!isValid){
 
             return done(null, false, { message: 'Unknown Password' });
         }
 
-        //3) check if account has been verified 
+        //3) check if account has been verified
         if(!user.active){
 
             return done(null, false, { message: 'You need to verifiy your account'});
@@ -50,7 +50,7 @@ passport.use('local', new LocalStrategy({
 
         return done(null, user);
 
-    
+
     } catch(error) {
         return done(error, false);
     }
