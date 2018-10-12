@@ -9,17 +9,15 @@ const passport  = require('passport');
 const http = require('http');
 const requestIp = require('request-ip');
 const where = require('node-where');
-var iplocation = require('iplocation');
+const iplocation = require('iplocation');
 const flash = require('connect-flash');
 const session = require('express-session');
-require('./config/passport'); 
+require('./config/passport');
 
 mongoose.Promise = global.Promise;
 
-
-//database connection 
+//database connection
 mongoose.connect('mongodb://root:root123@ds251362.mlab.com:51362/tutorry', { useNewUrlParser: true}, function(err){
-
   if(err){
     console.log(err);
   } else {
@@ -27,11 +25,10 @@ mongoose.connect('mongodb://root:root123@ds251362.mlab.com:51362/tutorry', { use
   }
 });
 
-
 const app = express();
 app.use(morgan('dev'));
 
-// View Engine 
+// View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'layout' }));
 app.set('view engine', 'handlebars');
@@ -60,19 +57,12 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
 
   res.render('notFound');
 });
 
-
 app.listen(4000, () => console.log('Server started listening on port 4000!'));
-
-
-
-
