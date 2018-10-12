@@ -12,6 +12,8 @@ const ContactusForm = require('../models/contactusform');
 const tutor = require('../models/tutors');
 const request = require('request');
 const User = require('../models/user');
+const Profile = require('../models/profile');
+
 const passport = require('passport');
 const randomstring = require('randomstring');
 var springedge = require('springedge');
@@ -25,31 +27,6 @@ const userSchema = Joi.object().keys({
 });
 
 
-router.route('/message')
-.get((req,res)=>{
-
-  var number = '918879833819';
-
-  console.log('message button clicked');
-  var params = {
-  'apikey': '6gds7p61a52v92b36d61sqem4klx2qjs', // API Key
-  'sender': 'SEDEMO', // Sender Name
-  'to': [
-    number  //Moblie Number
-  ],
-  'message': 'Hi, this is a test message from TUTORRY.IN',
-  'format': 'json'
-};
- 
-springedge.messages.send(params, 5000, function (err, response) {
-  if (err) {
-    return console.log(err);
-  }
-  console.log(response);
-});
-
-
-});
 
 
 //if user is trying to access his home page without login then he is restricted
@@ -64,7 +41,7 @@ const isAuthenticated = (req, res, next) => {
 };
 
 // if user is already logged in and still wants to access something which can be
-// accessed only when the user is logged in then a message prompts that he is 
+// accessed only when the user is logged in then a message prompts that he is
 // already logged in
 
 const isNotAuthenticated = (req, res, next) => {
@@ -76,8 +53,34 @@ const isNotAuthenticated = (req, res, next) => {
   }
 };
 
+router.route('/message')
+.get(isAuthenticated, (req,res)=>{
 
-/*router.route('/forgotPass')
+  var number = '918879833819';
+
+  console.log('message button clicked');
+  var params = {
+  'apikey': '6gds7p61a52v92b36d61sqem4klx2qjs', // API Key
+  'sender': 'SEDEMO', // Sender Name
+  'to': [
+    number  //Moblie Number
+  ],
+  'message': 'Hi, this is a test message from TUTORRY.IN',
+  'format': 'json'
+};
+
+springedge.messages.send(params, 5000, function (err, response) {
+  if (err) {
+    return console.log(err);
+  }
+  console.log(response);
+});
+
+
+});
+
+
+router.route('/forgotPass')
 .get(isNotAuthenticated,(req,res)=>{
 
   res.render('passwordRecovery');
@@ -92,15 +95,15 @@ if(userExists){
 
 
   const link = "http://127.0.0.1:4000/users/changePassword?email="+req.body.email;
-     
-     
+
+
        const html = `
       Please click on the following link to reset your password
       <br/>
       <br/>
        <a href="${link}">please click this</a>
       <br/><br/>
-      Have a pleasant day.` 
+      Have a pleasant day.`
 
       // Send email
       mailer.sendEmail('tutorry.in@gmail.com', req.body.email, '', html);
@@ -118,28 +121,32 @@ else{
 router.route('/changePassword')
 .get((req,res)=>{
 
-  console.log(req.query.email);
-  res.render('resetPassword');
+  //console.log(req.query.email);
+  res.render('resetPassword',{email:req.query.email});
 
-}).post((req,res)=>{
+}).post(async (req,res)=>{
+
+  console.log(req.query.email);
+
+  try{
 
   if(req.body.password==req.body.confirmationPassword){
 
+console.log('password matched');
+    const hashed = await User.hashPassword(req.body.password);
+    console.log(hashed);
 
-    const hashed = User.hashPassword(req.body.password);
-
-  const changedPassword =  User.updateOne(
+  const changedPassword = await User.update(
   { email: req.query.email },
   {
     $set: { password: hashed }
-   
+
   }
 
   );
 
-  
-
-  if(changedPassword){
+  console.log(changedPassword);
+if(changedPassword){
     res.redirect('login');
     return;
   }
@@ -149,11 +156,15 @@ router.route('/changePassword')
   }
 
 }
+}catch(error){
 
-});*/
+  console.log(error);
+}
+
+});
 
 
-// this route is executed when the user clicks the signup button or directly 
+// this route is executed when the user clicks the signup button or directly
 // puts register link in the browser.
 
 router.route('/register')
@@ -171,7 +182,7 @@ router.route('/register')
       }
 
 
-      // When new user is registering , the email he puts is checked if 
+      // When new user is registering , the email he puts is checked if
       // that email is registered with some other user.
       const user = await User.findOne({ 'email': result.value.email });
       console.log(user);
@@ -181,7 +192,7 @@ router.route('/register')
         return;
       }
 
-      // password is hashed so that is not visible to anyone the way the user inputs 
+      // password is hashed so that is not visible to anyone the way the user inputs
 
 
       const hash = await User.hashPassword(result.value.password);
@@ -196,24 +207,24 @@ router.route('/register')
 
       result.value.secretToken = secretToken;
 
-      // Flag account as inactive while registeration to restrict him from not accessing 
+      // Flag account as inactive while registeration to restrict him from not accessing
       // without account verification, Once the account is verified it is set back to true.
       result.value.active = false;
 
       // Save user to DB
-      // We dnt need confirm password and password both to be save in the  database so it 
+      // We dnt need confirm password and password both to be save in the  database so it
       // deleted before entering the details in the DB
       delete result.value.confirmationPassword;
       result.value.password = hash;
-      const newUser = await new User(result.value); 
+      const newUser = await new User(result.value);
       console.log('newUser', newUser);
       await newUser.save();
 
       // Compose email After the details are saved in the database
       //this is the email which will be send to the user
        const link = "http://127.0.0.1:4000/users/verify?id="+result.value.secretToken;
-     
-     
+
+
        const html = `Hi there,
       <br/>
       Thank you for registering!
@@ -224,12 +235,12 @@ router.route('/register')
       <br/>
        <a href="${link}">please click on the link</a>
       <br/><br/>
-      Have a pleasant day.` 
+      Have a pleasant day.`
 
       // Send email
       await mailer.sendEmail('tutorry.in@gmail.com', result.value.email, '', html);
 
- 
+
 
       req.flash('success', 'An email verification code has been sent to you email account, Please check your email and click on the link to complete registration');
       res.redirect('/users/login');
@@ -239,8 +250,8 @@ router.route('/register')
     }
   });
 
- 
-  
+
+
 
 
  /*router.route('/verify')
@@ -254,7 +265,7 @@ router.route('/register')
   { secretToken: token },
   {
     $set: { 'username': "suri" }
-   
+
   }
 
   );
@@ -280,7 +291,7 @@ router.route('/verify')
   { secretToken: token },
   {
     $set: { active: true }
-   
+
   },function(err,res){
      if(err){
       throw err;
@@ -302,6 +313,7 @@ router.route('/login')
     res.render('login');
   })
   .post(passport.authenticate('local', {
+    successReturnToOrRedirect: '/',
     successRedirect: '/users/dashboard',
     failureRedirect: '/users/login',
     failureFlash: true
@@ -311,7 +323,7 @@ router.route('/login')
   router.route('/dashboard')
   .get(isAuthenticated,(req,res)=>{
 
-    res.render('dashboard');
+    res.render('dashboard', {username:req.user.username});
 
   });
 
@@ -341,7 +353,7 @@ request({
   else{
 
     city = body.city;
-     
+
   }
 
 });
@@ -359,13 +371,13 @@ request({
                         subjectChunks.push(docs.slice(i, i+chunkSize));
                     }
                       res.render('find_tutor', {  tutors: subjectChunks });
-                    
+
                   }).sort({price:+1});
 
              }
 
-             
-            
+
+
              else if(req.query.n){
 
               console.log('display subject');
@@ -376,14 +388,14 @@ request({
                     subjectChunks.push(docs.slice(i, i+chunkSize));
                 }
                   res.render('find_tutor', {  tutors: subjectChunks });
-                
+
               }).sort({price:+1});
 
              }
 
              else if(req.query.z){
 
-               
+
 
                 console.log('display zipcode');
               tutor.find( {zipcode:req.query.z}, function(err, docs){
@@ -393,7 +405,7 @@ request({
                     subjectChunks.push(docs.slice(i, i+chunkSize));
                 }
                   res.render('find_tutor', {  tutors: subjectChunks });
-                
+
               }).sort({price:+1});
 
 
@@ -409,7 +421,7 @@ request({
                         subjectChunks.push(docs.slice(i, i+chunkSize));
                     }
                       res.render('find_tutor', {  tutors: subjectChunks });
-                    
+
                   }).sort({price:+1});
 
              }
@@ -417,17 +429,11 @@ request({
 
 // Validation Schema, validationg the fields which user is entering
 
-const contactusSchema = Joi.object().keys({
-  email: Joi.string().email().required(),
-  name: Joi.string().required(),
-  message: Joi.string().required()
-  
-});
 
 
   router.route('/viewtutor')
   .get((req, res) => {
-   
+
     var tutor_email = req.query.email;
     //console.log(req.query.current_tutor)
    tutor.findOne({ email:tutor_email },function(req,result){
@@ -435,13 +441,13 @@ const contactusSchema = Joi.object().keys({
     console.log(result);
      var current_tutor = result.email;
 
-      
+
       res.render('viewtutor', { name: result.name, email: result.email, location: result.location, rating: result.rating, subjects: result.subjects });
 
 
 
     });
-     
+
   });
 
 
@@ -450,7 +456,7 @@ router.route('/inner')
     res.render('news');
   });
 
-  
+
 
 
 
@@ -459,21 +465,29 @@ router.route('/become_tutor')
     res.render('become_tutor');
   });
 
+
+  const contactusSchema = Joi.object().keys({
+    email: Joi.string().email().required(),
+    name: Joi.string().required(),
+    message: Joi.string().required()
+
+  });
+
   router.route('/contacts')
   .get((req, res) => {
     res.render('contacts');
   }).post((req, res) => {
-    
+
       const result = Joi.validate(req.body, contactusSchema);
       const contact_message = result.value.message;
       if (result.error) {
           console.log(result.error);
-        
+
         res.redirect('/users/contacts');
-      
+
       }
 
-      const newContact = new ContactusForm(result.value); 
+      const newContact = new ContactusForm(result.value);
       console.log('newContact', newContact);
       newContact.save();
 
@@ -482,18 +496,18 @@ router.route('/become_tutor')
 
       const html = `Hi there,
       <br/>
-      Thank you for contacting us 
-      </br></br>     
+      Thank you for contacting us
+      </br></br>
       We have recieved your message.
       </br>
       <b>${contact_message}</b>
       <br/> </br>
 
-      <a href="${link}">${contact_message}</a> 
-      </br></br>   
+      <a href="${link}">${contact_message}</a>
+      </br></br>
       We will reach back to you soon.
       <br/><br/>
-      Have a pleasant day.` 
+      Have a pleasant day.`
 
       // Send email
       mailer.sendEmail('tutorry.in@gmail.com', result.value.email, 'Message', html);
@@ -502,9 +516,34 @@ router.route('/become_tutor')
 
   });
 
+  router.route('/profile')
+  .post(async(req,res)=>{
+
+try{
+
+  console.log(req.body.age);
+  //  const result = Joi.validate(req.body);
+  const userProfile = await new Profile({
+
+    user:req.user,
+    age:req.body.age
+  });
   
-  
+  console.log(userProfile);
+  await userProfile.save();
+
+
+
+
+}catch(error){
+
+  console.log(error);
+}
+
+  })
+
+
+
 module.exports = router;
 
 console.log('leaving users.js');
-
