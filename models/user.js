@@ -1,4 +1,4 @@
-// this is the model file, this file contains details of the schema , in this case it is user registration schema 
+// this is the model file, this file contains details of the schema , in this case it is user registration schema
 // We use mongoose for mongodb
 
 
@@ -13,7 +13,7 @@ const bcrypt = require('bcryptjs');
 //ObjectId = Schema.ObjectId;
 //console.log(studentId);
 const userSchema = new Schema({
-	
+
 	email: String,
 	username: String,
 	password: String,
@@ -38,7 +38,7 @@ module.exports.hashPassword =  async(password) => {
 
 	const salt = await bcrypt.genSalt(10);
 	return await bcrypt.hash(password, salt);
-	
+
 	} catch(error) {
 
 		throw new Error('Hashing failed', error);
@@ -47,14 +47,10 @@ module.exports.hashPassword =  async(password) => {
 };
 
 module.exports.comparePasswords = async (inputPassword, hashedPassword) => {
-
-	console.log("in the comparePasswords function "+inputPassword);
-	console.log("in the comparePasswords function "+hashedPassword);
-
 	try{
 
 	return await bcrypt.compare(inputPassword, hashedPassword );
-	
+
 	} catch(error){
 
 		throw new Error('Comparing failed', error);
